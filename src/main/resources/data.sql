@@ -3,11 +3,11 @@ INSERT INTO `db_demo`.`t_user`
 VALUES ('1', 'sfax', 'mahdi@live.fr', 1, 'mahdi', "MALE", 'Kallel', '123456', '24256574', 'mahdi');
 
 INSERT INTO `db_demo`.`t_user`
-VALUES ('2', 'sfax', 'emna@live.fr', 0, 'emna', "Female", 'Kallel', '123456', '24256574', 'emna');
+VALUES ('2', 'sfax', 'emna@live.fr', 0, 'emna', "FEMALE", 'Kallel', '123456', '24256574', 'emna');
 
 
 INSERT INTO `db_demo`.`t_user`
-VALUES ('3', 'sfax', 'test@live.fr', 0, 'guest', "Female", 'guest', '123456', '24256574', 'guest');
+VALUES ('3', 'sfax', 'test@live.fr', 0, 'guest', "FEMALE", 'guest', '123456', '24256574', 'guest');
 
 
 /*-----------------------------Role------------------------------------------------------*/

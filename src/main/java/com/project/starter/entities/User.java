@@ -48,10 +48,9 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "TJ_USER_ROLE", joinColumns = {@JoinColumn(name = "USR_ID", nullable = true, updatable = false)}, inverseJoinColumns = {
             @JoinColumn(name = "ROL_ID", nullable = true, updatable = true)})
-    @Fetch(value = FetchMode.SELECT)
     private Set<Role> roles = new HashSet<>(0);
 
 
