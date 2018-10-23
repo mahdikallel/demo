@@ -1,12 +1,13 @@
-package com.project.starter.repository.custom;
+package com.project.starter.repository.impl;
 
 import com.project.starter.entities.User;
+import com.project.starter.repository.custom.IUserRepositoryCustom;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-public class IUserRepositoryCustomImpl implements IUserRepositoryCustom {
+public class IUserRepositoryImpl implements IUserRepositoryCustom {
     @PersistenceContext
     EntityManager entityManager;
 

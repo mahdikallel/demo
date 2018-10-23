@@ -1,6 +1,9 @@
 package com.project.starter.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.project.starter.enums.Gender;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -55,6 +58,7 @@ public class User implements Serializable {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "TJ_USER_ROLE", joinColumns = {@JoinColumn(name = "USR_ID", nullable = true, updatable = false)}, inverseJoinColumns = {
             @JoinColumn(name = "ROL_ID", nullable = true, updatable = true)})
+    @JsonBackReference
     private Set<Role> roles = new HashSet<>(0);
 
 
