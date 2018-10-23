@@ -4,6 +4,7 @@ package com.project.starter.entities;
 import com.project.starter.enums.Gender;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -47,6 +48,9 @@ public class User implements Serializable {
     @Column(name = "USER_GENDER", nullable = true)
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @Column(name = "USR_DELETED", nullable = true)
+    private boolean deleted;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "TJ_USER_ROLE", joinColumns = {@JoinColumn(name = "USR_ID", nullable = true, updatable = false)}, inverseJoinColumns = {
@@ -144,5 +148,13 @@ public class User implements Serializable {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

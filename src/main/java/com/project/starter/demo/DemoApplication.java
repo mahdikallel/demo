@@ -1,5 +1,6 @@
 package com.project.starter.demo;
 
+import com.project.starter.repository.impl.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -10,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EntityScan(basePackages = {"com.project.starter.entities"})
-@EnableJpaRepositories("com.project.starter.repository")
+@EnableJpaRepositories(basePackages = "com.project.starter.repository")
 @ComponentScan("com.project.starter")
 public class DemoApplication {
 private static final Logger LOGGER = LoggerFactory.getLogger(DemoApplication.class);

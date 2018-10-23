@@ -2,6 +2,7 @@ package com.project.starter.controller;
 
 import com.project.starter.entities.User;
 import com.project.starter.repository.IUserRepository;
+import com.project.starter.repository.impl.UserRepository;
 import com.project.starter.service.IUserService;
 import com.project.starter.service.impl.UserService;
 import org.slf4j.Logger;
@@ -30,13 +31,14 @@ public class UserController {
     @RequestMapping(value = "/users", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<List<User>> findAllUsers() {
         LOGGER.info("find All users");
-        return  new  ResponseEntity<>(userRepository.findAll(),HttpStatus.OK);
+        return new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
+
     }
 
-    @RequestMapping(value = "/user/{id}",method = RequestMethod.GET,produces = "application/json")
-    public ResponseEntity<User> getUserById(@PathVariable int id){
-        if(userRepository.findById(id).isPresent()){
-            return  new  ResponseEntity<User>(userRepository.findById(id).get(), HttpStatus.OK);
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<User> getUserById(@PathVariable int id) {
+        if (userRepository.findById(id).isPresent()) {
+            return new ResponseEntity<User>(userRepository.findById(id).get(), HttpStatus.OK);
         }
         return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
     }
