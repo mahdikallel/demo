@@ -14,4 +14,6 @@ public interface IUserRepository extends JpaRepository<User, Integer> {
     int countUserByLastname(String lastname);
 
     void removeByAddressEndsWithAndEnabled(String address, boolean isEnabled);
+
+    User findByUsername(String username);
 }
