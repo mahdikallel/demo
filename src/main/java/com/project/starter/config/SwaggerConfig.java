@@ -5,9 +5,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.Collections;
 
 import static springfox.documentation.builders.PathSelectors.regex;
 
@@ -22,7 +26,8 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select().apis(RequestHandlerSelectors.basePackage("com.project.starter.controller"))
                 .paths(regex("/*.*"))
-                .build();
+                .build()
+                .apiInfo(getApiInfo());
 
     }
 
@@ -33,5 +38,18 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
 
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
+
+    private ApiInfo getApiInfo() {
+        return new ApiInfo(
+                "Demo",
+                "Demo application",
+                "1.0",
+                "TERMS OF SERVICE URL",
+                new Contact("Mahdi Kallel","URL","mahdi-kallel@live.fr"),
+                "LICENSE",
+                "LICENSE URL",
+                Collections.emptyList()
+        );
     }
 }

@@ -1,8 +1,6 @@
 package com.project.starter.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -27,10 +25,10 @@ public class Role  implements Serializable {
     @Column(name = "ROL_DESCRIPTION", unique = false, nullable = false)
     private String description;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "TJ_AUTH_ROLE", joinColumns = { @JoinColumn(name = "ROL_ID", nullable = true, updatable = false) }, inverseJoinColumns = {
             @JoinColumn(name = "AUT_ID", nullable = true, updatable = true) })
-    @JsonBackReference
     private Set<Authority> authorities = new HashSet<>(0);
 
     public Role() {
