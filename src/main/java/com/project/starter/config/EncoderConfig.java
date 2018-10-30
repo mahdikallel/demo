@@ -14,4 +14,9 @@ public class EncoderConfig {
     public PasswordEncoder oauthClientPasswordEncoder() {
         return new BCryptPasswordEncoder(4);
     }
+
+    @Bean
+    public PasswordEncoder userPasswordEncoder() {
+        return new BCryptPasswordEncoder(8);
+    }
 }
