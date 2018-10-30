@@ -1,7 +1,7 @@
 package com.project.starter.controller;
 
 import com.project.starter.entities.User;
-import com.project.starter.repository.IUserRepository;
+import com.project.starter.repository.UserRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -27,7 +27,7 @@ public class UserController {
 
 
     @Autowired
-    IUserRepository userRepository;
+    UserRepository userRepository;
 
     @ApiOperation(value = "View a list of available products", response = Iterable.class)
     @ApiResponses(value = {
@@ -46,13 +46,21 @@ public class UserController {
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<User> getUserById(@PathVariable int id) {
-        Optional<User> userOptional =userRepository.findById(id);
+        Optional<User> userOptional = userRepository.findById(id);
         if (userOptional.isPresent()) {
-            LOGGER.info("roles --> {}", userOptional.get().getRoles());
             return new ResponseEntity<User>(userOptional.get(), HttpStatus.OK);
         }
-
         return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE, produces = "application/json")
+    public ResponseEntity<User> logicalDelete(@PathVariable int id) {
+        Optional<User> userOptional = userRepository.findById(id);
+        if (userRepository.logicDelete(id)) {
+            return new ResponseEntity<User>(userOptional.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<User>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 

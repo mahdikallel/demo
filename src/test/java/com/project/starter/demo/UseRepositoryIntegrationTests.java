@@ -2,22 +2,14 @@ package com.project.starter.demo;
 
 import com.project.starter.demo.config.JpaConfig;
 import com.project.starter.entities.User;
-import com.project.starter.repository.IUserRepository;
-import javafx.application.Application;
+import com.project.starter.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,7 +26,7 @@ public class UseRepositoryIntegrationTests {
 
 
     @Autowired
-    private IUserRepository userRepository;
+    private UserRepository userRepository;
 
     @Test
     public void saveAndRetreiveEntity_thenOK() {

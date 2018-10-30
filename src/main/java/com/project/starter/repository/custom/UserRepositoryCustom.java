@@ -2,7 +2,7 @@ package com.project.starter.repository.custom;
 
 import com.project.starter.entities.User;
 
-public interface IUserRepositoryCustom {
+public interface UserRepositoryCustom {
 
-    boolean logicDelete(User user);
+    boolean logicDelete(int id);
 }
