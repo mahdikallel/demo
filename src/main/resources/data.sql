@@ -154,3 +154,16 @@ VALUES (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (1, 8), (1, 9), (
   (2, 92), (2, 93), (2, 94), (2, 95), (2, 96), (2, 97), (2, 98), (2, 99), (2, 100), (2, 101), (2, 102), (2, 103),
   (2, 104), (2, 105), (2, 106), (2, 107), (2, 108), (2, 109), (2, 110), (2, 111), (2, 112), (2, 113), (2, 114),
   (2, 115), (2, 116), (2, 117), (2, 118), (2, 119), (2, 120), (2, 121);
+
+
+/*------------------------Insert oauth data----------------------------------------------------------------------------*/
+INSERT INTO OAUTH_CLIENT_DETAILS (CLIENT_ID, RESOURCE_IDS, CLIENT_SECRET, SCOPE, AUTHORIZED_GRANT_TYPES, AUTHORITIES, ACCESS_TOKEN_VALIDITY, REFRESH_TOKEN_VALIDITY)
+VALUES ('spring-security-oauth2-read-client', 'resource-server-rest-api',
+        /*spring-security-oauth2-read-client-password1234*/
+        '$2a$04$WGq2P9egiOYoOFemBRfsiO9qTcyJtNRnPKNBl5tokP7IP.eZn93km',
+        'read', 'password,authorization_code,refresh_token,implicit', 'USER', 10800, 2592000);
+INSERT INTO OAUTH_CLIENT_DETAILS (CLIENT_ID, RESOURCE_IDS, CLIENT_SECRET, SCOPE, AUTHORIZED_GRANT_TYPES, AUTHORITIES, ACCESS_TOKEN_VALIDITY, REFRESH_TOKEN_VALIDITY)
+VALUES ('spring-security-oauth2-read-write-client', 'resource-server-rest-api',
+        /*spring-security-oauth2-read-write-client-password1234*/
+        '$2a$04$soeOR.QFmClXeFIrhJVLWOQxfHjsJLSpWrU1iGxcMGdu.a5hvfY4W',
+        'read,write', 'password,authorization_code,refresh_token,implicit', 'USER', 10800, 2592000);

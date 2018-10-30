@@ -8,11 +8,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-@Transactional()
 public class UserRepositoryImpl implements UserRepositoryCustom {
     @PersistenceContext
     EntityManager entityManager;
 
+    @Transactional()
     @Override
     public boolean logicDelete(int id) {
         Query query = entityManager.createNativeQuery("UPDATE T_USER SET USR_DELETED=1 WHERE USR_ID= :userId");
