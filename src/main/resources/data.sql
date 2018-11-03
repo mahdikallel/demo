@@ -1,6 +1,6 @@
 /*-----------------------------User------------------------------------------------------*/
 INSERT INTO `db_demo`.`t_user`
-VALUES ('1', 'sfax', 0, 'mahdi@live.fr', 1, 'mahdi', "MALE", 'Kallel', '$2y$08$bRzn8LIEIP8v2957JK0hGuzMiESUz9GpvJZ9zk5tjVeoneAvyYAh2', '24256574', 'mahdi');
+VALUES ('1', 'sfax', 0, 'mahdi@live.fr', 1, 'mahdi', "MALE", 'Kallel', '$2a$10$EblZqNptyYvcLm/VwDCVAuBjzZOI7khzdyGPBr08PpIi0na624b8.', '24256574', 'mahdi');
 
 INSERT INTO `db_demo`.`t_user`
 VALUES ('2', 'sfax', 0, 'emna@live.fr', 0, 'emna', "FEMALE", 'Kallel', '123456', '24256574', 'emna');

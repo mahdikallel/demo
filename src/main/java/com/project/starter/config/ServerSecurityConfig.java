@@ -12,17 +12,20 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.io.Serializable;
+
 /**
  * Created by Mahdi on 30/10/2018.
  */
 @Configuration
 @EnableWebSecurity
 @Import(EncoderConfig.class)
-public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
+public class ServerSecurityConfig extends WebSecurityConfigurerAdapter implements Serializable{
 
     @Autowired
     @Qualifier("localUserDetailsService")
     private UserDetailsService userDetailsService;
+
     @Autowired
     private PasswordEncoder userPasswordEncoder;
 

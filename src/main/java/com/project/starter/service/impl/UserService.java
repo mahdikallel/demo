@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -33,17 +34,14 @@ public class UserService implements IUserService, UserDetailsService {
         return userRepository.findAll();
     }
 
-
+    @Transactional
     @Override
-    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
         if (user != null) {
             UserDetails userDetails = new UserDetails() {
-                private Collection<? extends GrantedAuthority> getAuthorities(
-                        Collection<Role> roles) {
-                    List<GrantedAuthority> authorities
-                            = new ArrayList<>();
+                private Collection<? extends GrantedAuthority> getAuthorities(Collection<Role> roles) {
+                    List<GrantedAuthority> authorities = new ArrayList<>();
                     for (Role role : roles) {
                         authorities.add(new SimpleGrantedAuthority(role.getDesignation()));
                         role.getAuthorities().stream()

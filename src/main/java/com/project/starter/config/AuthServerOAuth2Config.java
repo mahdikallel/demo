@@ -31,17 +31,17 @@ public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter
 
     @Autowired
     @Qualifier("dataSource")
-    private DataSource dataSource;
+    private  DataSource dataSource;
 
     @Autowired
     private AuthenticationManager authenticationManager;
 
     @Qualifier("localUserDetailsService")
     @Autowired
-    private UserDetailsService userDetailsService;
+    private  UserDetailsService userDetailsService;
 
     @Autowired
-    private PasswordEncoder oauthClientPasswordEncoder;
+    private transient PasswordEncoder oauthClientPasswordEncoder;
 
     @Bean
     public TokenStore tokenStore() {

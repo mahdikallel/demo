@@ -26,7 +26,7 @@ public class Role  implements Serializable {
     private String description;
 
     @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "TJ_AUTH_ROLE", joinColumns = { @JoinColumn(name = "ROL_ID", nullable = true, updatable = false) }, inverseJoinColumns = {
             @JoinColumn(name = "AUT_ID", nullable = true, updatable = true) })
     private Set<Authority> authorities = new HashSet<>(0);
