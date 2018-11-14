@@ -1,8 +1,9 @@
 package com.project.starter.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.starter.enums.Gender;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -56,8 +57,8 @@ public class User implements Serializable {
     @Column(name = "USR_DELETED", nullable = true)
     private boolean deleted;
 
-    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
+    @Fetch(FetchMode.JOIN)
     @JoinTable(name = "TJ_USER_ROLE", joinColumns = {@JoinColumn(name = "USR_ID", nullable = true, updatable = false)}, inverseJoinColumns = {
             @JoinColumn(name = "ROL_ID", nullable = true, updatable = true)})
     private Set<Role> roles = new HashSet<>(0);

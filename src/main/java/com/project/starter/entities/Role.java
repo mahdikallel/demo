@@ -1,6 +1,7 @@
 package com.project.starter.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,8 +26,9 @@ public class Role  implements Serializable {
     @Column(name = "ROL_DESCRIPTION", unique = false, nullable = false)
     private String description;
 
-    @JsonIgnore
+
     @ManyToMany(fetch = FetchType.LAZY)
+    @Fetch(FetchMode.JOIN)
     @JoinTable(name = "TJ_AUTH_ROLE", joinColumns = { @JoinColumn(name = "ROL_ID", nullable = true, updatable = false) }, inverseJoinColumns = {
             @JoinColumn(name = "AUT_ID", nullable = true, updatable = true) })
     private Set<Authority> authorities = new HashSet<>(0);
@@ -91,10 +93,7 @@ public class Role  implements Serializable {
             return false;
         }
         Role other = (Role) obj;
-        if (id != other.id) {
-            return false;
-        }
-        return true;
+        return id == other.id;
     }
 
     @Override
